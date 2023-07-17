@@ -417,11 +417,30 @@ app.get('/editAnnouncement/:announcementId',isAuthenticated, (req, res) => {
  
   
   // Delete Announcement
-  app.get('/deleteAnnouncement/:announcementId', (req, res) => {
+  app.get('/deleteAnnouncement/:announcementId',isAuthenticated, (req, res) => {
+    const userId = req.user.id;
     const announcementId = req.params.announcementId;
     // Delete the announcement from the database using the announcementId
     // Redirect to the user's profile page or any other desired location
-    res.redirect('/profile');
+    User.findById(userId, function(err, foundUser) {
+        if (err) {
+          console.log(err);
+        } else {
+          const announcement = foundUser.announcements.id(announcementId);
+          if (!announcement) {
+            // Article not found for the user
+            return res.redirect("/user");
+          }
+          announcement.remove();
+          foundUser.save(function(err) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.redirect("/user"); // Redirect to user's articles page
+            }
+          });
+        }
+      });
   });
   
   

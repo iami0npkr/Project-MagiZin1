@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head style="background-color: rgba(22, 110, 79, 0.694);" >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MagiZin</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(22, 110, 79, 0.694); ">
+      <a class="navbar-brand" href="/" style="color: #f8f9fa; font-family:'Times New Roman', Times, serif; font-size:3vmax" >MagiZin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/user" style="color: white;">User</a>
+          </li>
+          <li class="dropdown">
+            <button style="background-color: rgba(31, 101, 76, 0.192); color:#f8f9fa;" class=" nav-link btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Category
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/articles/categoryA">Category A</a>
+              <a class="dropdown-item" href="/articles/categoryB">Category B</a>
+              <a class="dropdown-item" href="/articles/categoryC">Category C</a>
+              <a class="dropdown-item" href="/articles/categoryD">Category D</a>
+              <a class="dropdown-item" href="/articles/categoryE">Category E</a>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" style="color: white;">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="goBack()" style="color: white;">Go Back</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Rest of your page content here -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<body style="background-color: aquamarine;">
+<div class="container mt-5">
+  <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Word Details</h1>
+
+  <div class="card" style="background-color: rgba(218, 244, 235, 0.582);">
+    <div class="card-body" >
+      <h2 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><%= word %></h2>
+      <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Origin:</strong> <%= wordOrigin %></p>
+      <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Pronunciation:</strong> <%= pronunciation %></p>
+      </div>
+      
+      <% for (let i = 0; i < meanings.length; i++) { %>
+        <hr>
+        <div class="card-body">
+        <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Meaning <%= i + 1 %></h5>
+        <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Part of Speech:</strong> <%= meanings[i].partOfSpeech %></p>
+        <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Meaning:</strong> <%= meanings[i].definitions[0].definition %></p>
+        <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Example:</strong> <%= meanings[i].definitions[0].example %></p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+    <div class="d-flex justify-content-center mt-3">
+    <button onclick="goBack()" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go Back</button>
+  </div>
+  <br><br><br><br>
+</div>
+</body>
+
+<%- include('partials/footer') %>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

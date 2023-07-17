@@ -1,0 +1,72 @@
+<%- include('partials/login-header') %>
+<body style="background-color: aquamarine;">
+<div class="container mt-5" style="background-color: aquamarine;">
+  <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Topics</h1>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+          <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Business</h5>
+          <p class="card-text">Learn about industry trends, strategies, and more.</p>
+          <a href="/articles/categoryA" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go to Business</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+          <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Education</h5>
+          <p class="card-text">Explore our educational insights and knowledge.</p>
+          <a href="/articles/categoryB" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go to Education</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+          <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Entertainment</h5>
+          <p class="card-text">Discover the world of entertainment and pop culture.</p>
+          <a href="/articles/categoryC" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go to Entertainment</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+          <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Sports</h5>
+          <p class="card-text">Get insights into your favorite sports teams and athletes.</p>
+          <a href="/articles/categoryD" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go to Sports</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+          <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Tech</h5>
+          <p class="card-text">Stay ahead in the fast-paced world of technology.</p>
+          <a href="/articles/categoryE" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go to Tech</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+    <button onclick="goBack()" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go Back</button>
+    </div><br><br>
+</body>
+
+<%- include('partials/footer') %>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

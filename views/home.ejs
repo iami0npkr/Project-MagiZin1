@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MagiZin</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="icon" type="image/jpg" href="/favicon.jpg">
+  
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgba(27, 99, 73, 0.696); color: #f8f9fa;">
+      <a class="navbar-brand" href="/" style="color: #f8f9fa; font-family:'Times New Roman', Times, serif; font-size:3vmax">MagiZin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="color: #f8f9fa;">
+        <span class="navbar-toggler-icon" style="color: #f8f9fa;"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" style="color: #f8f9fa;">
+        <ul class="navbar-nav ml-auto" style="color: #f8f9fa;">
+          <li class="nav-item">
+            <a class="nav-link" href="/" style="color: #f8f9fa;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/articles" style="color: #f8f9fa;">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login" style="color: #f8f9fa;">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register" style="color: #f8f9fa;">Register</a>
+          </li>
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0 ml-auto" action="/search" method="post" >
+              <input class="form-control mr-sm-2" placeholder="Type to know meaning!" aria-label="Search" name="define" required minlength="1">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="color: #f8f9fa;">Learn</button>
+            </form>
+          </li>
+        </ul>
+    </div>
+        
+    </nav>
+  </header>
+
+  <!-- Rest of your page content here -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+
+
+
+<body style="background-color: aquamarine;">
+<div class="container mt-5" style="background-color: aquamarine;">
+  <div class="row">
+    <div class="col-lg-8">
+      <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;">Welcome to MagiZin</h1>
+      <p>Explore our website to find interesting articles, news, and resources on various topics.</p>
+
+      <!-- About Us Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4" >
+            <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+              <h2 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">About Us</h2>
+              <p class="card-text">Learn about our organization and what we do.</p>
+              <a href="/about" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)" >Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Articles Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4"  >
+            <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+              <h2 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Latest Articles</h2>
+              <p class="card-text">Discover the most recent articles published on our platform.</p>
+              <a href="/articles" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">View Articles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Sections -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4" >
+            <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+              <h2 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Featured Topics</h2>
+              <p class="card-text">Explore our curated collection of articles on popular topics.</p>
+              <a href="/topics" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Browse Topics</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+   
+
+       
+    </div>
+
+    <div class="col-lg-4">
+      <!-- Announcement Bar -->
+    
+      <div class="announcement-bar">
+        <% usersWithAnnouncements.reverse().forEach(function(user) { %>
+          <% user.announcements.reverse().forEach(function(announcement) { %>
+            <div class="card mb-3"  >
+              <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+                <p class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><%= " '"+announcement.announcement+"' " %></p>
+                <p class="card-text" style="font-weight: lighter;font-style: italic; color: rgb(71, 79, 79);"> <%= "   -"+user.fullname +","+announcement.createdAt %></p>
+                
+                
+              </div>
+            </div>
+          <% }) %>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<%- include('partials/footer') %>

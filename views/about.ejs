@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+<body style="background-color: aquamarine;">
+ 
+    <div class="container mt-5">
+        <div class="card">
+          <div class="card-body" style="background-color: rgba(170, 236, 214, 0.495);">
+            <h1 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">About Us</h1>
+            <p class="card-text">Welcome to MagiZin, a platform dedicated to providing informative and engaging articles on various topics.</p>
+            <p class="card-text">Our mission is to empower readers with knowledge and inspire them to explore new ideas, learn, and grow.</p>
+            <p class="card-text">Whether you're interested in business, education, entertainment, sports, or tech, we've got you covered.</p>
+            <p class="card-text">Our team of passionate writers and contributors works tirelessly to deliver high-quality content that educates,
+              entertains, and sparks curiosity.</p>
+            <p class="card-text">Thank you for choosing MagiZin as your source of information and inspiration. We hope you enjoy your journey
+              with us!</p>
+          </div>
+        </div><br>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <button onclick="goBack()" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go Back</button>
+        </div>
+<br><br>
+  </body>
+  <%- include('partials/footer') %>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

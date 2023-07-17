@@ -1,0 +1,36 @@
+
+body {
+  background-color: #E8ECEF;
+}
+
+.centered {
+    padding-top: 200px;
+    text-align: center;
+}
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #000;
+}
+footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}
+
+.social-icons {
+  margin-bottom: 10px;
+}
+
+.social-icon {
+  color: #000;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.footer-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+

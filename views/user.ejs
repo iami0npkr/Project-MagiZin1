@@ -1,0 +1,196 @@
+<%- include('partials/login-header') %>
+<body style="background-color: aquamarine;" >
+<div class="container mt-5" style="background-color: aquamarine;">
+  <h1 style="font-family: 'Times New Roman', Times, serif;"><%= user.fullname+"'s Profile" %></h1>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" id="allArticlesTab" data-toggle="tab" href="#allArticles" style="color: rgba(33, 86, 73, 0.696) " >All Articles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="myArticlesTab" data-toggle="tab" href="#myArticles" style="color: rgba(33, 86, 73, 0.696) "> My Articles </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="likedArticlesTab" data-toggle="tab" href="#likedArticles" style="color: rgba(33, 86, 73, 0.696) "> Liked Articles </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="myAnnouncementsTab" data-toggle="tab" href="#myAnnouncements" style="color: rgba(33, 86, 73, 0.696) "> My Announcements </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="viewUserTab" data-toggle="tab" href="#viewUser" style="color: rgba(33, 86, 73, 0.696) "> My Details </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="createArticleTab" data-toggle="tab" href="#createArticle" style="color: rgba(33, 86, 73, 0.696) "> Write an Article </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="announceTab" data-toggle="tab" href="#announce" style="color: rgba(33, 86, 73, 0.696)"> Announce </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="viewUserTab" data-toggle="tab" href="#changePassword" style="color: rgba(33, 86, 73, 0.696)"> Change Password </a>
+    </li>
+  </ul>
+  <!-- Tab content -->
+  <div class="tab-content mt-3" style="background-color: aquamarine;">
+    <div class="tab-pane fade show active" id="allArticles" style="background-color: aquamarine;">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">All Articles</h3>
+      <!-- Display all articles here -->
+      <% usersWithArticles.reverse().forEach(function(user) { %>
+        <% user.articles.reverse().forEach(function(article) { %>
+          <div class="card mb-3">
+            <div class="card-body" style="background-color: rgba(170, 236, 214, 0.495);">
+              <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><%= article.title %></h5>
+
+              <p class="card-text" style="font-style: oblique;"><%=article.place + " : "+ article.createdAt+ " by "+user.fullname %></p>
+              <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";">Topic:</strong> <%= article.category %></p>
+              <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";">Likes:</strong> <%= article.likeCount %></p>
+              <p class="card-text"><%= article.content.substring(0, 150) %>...</p>
+              <a href="/article/<%= article._id %>" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Read More</a>
+            </div>
+          </div>
+        <% }) %>
+      <% }) %>
+    </div>
+    <div class="tab-pane fade" id="myArticles">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">My Articles</h3>
+      <% user.articles.reverse().forEach(function(article) { %>
+        <div class="card mb-3">
+          <div class="card-body" style="background-color: rgba(170, 236, 214, 0.495);">
+            <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><%= article.title %></h5>
+            
+            <p class="card-text" style="font-style: oblique;"><%=article.place + " : "+ article.createdAt+ " by "+user.fullname %></p> 
+            <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Topic:</strong> <%= article.category %></p>
+            <p class="card-text"><%= article.content %></p>
+            <a href="/edit/<%= article._id %>" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Edit</a>
+            <a href="/delete/<%= article._id %>" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <div class="tab-pane fade" id="likedArticles">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Liked Articles</h3>
+      <% user.likedArticles.reverse().forEach(function(articleId) { %>
+        <% var likedArticle = articles.find(article => article._id.toString() === articleId.toString()); %>
+        <% if (likedArticle) { %>
+          <div class="card mb-3">
+            <div class="card-body" style="background-color: rgba(170, 236, 214, 0.495);">
+              <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><%= likedArticle.title %></h5>
+
+              <p class="card-text" style="font-style: oblique;"><%=likedArticle.place + " : "+ likedArticle.createdAt+ " by "+likedArticle.author %></p>
+              <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";">Topic:</strong> <%= likedArticle.category %></p>
+              <p class="card-text"><%= likedArticle.content.substring(0, 150) %>...</p>
+              <a href="/article/<%= likedArticle._id %>" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Read More</a>
+            </div>
+          </div>
+        <% } %>
+      <% }) %>
+    </div>
+    <div class="tab-pane fade" id="createArticle">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Create New Article</h3>
+      <form action="/submit" method="POST">
+        <div class="form-group">
+          <label for="title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter the article title" required maxlength="50">
+          <small id="titleHelp" class="form-text text-muted">Title can be up to 50 characters long.</small>
+        </div>
+        <div class="form-group">
+          <label for="content" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Content</label>
+          <textarea class="form-control" id="content" name="content" rows="5" placeholder="Enter the article content" required maxlength="2500"></textarea>
+          <small id="contentHelp" class="form-text text-muted">Content can be up to 2500 characters long.</small>
+        </div>
+        <div class="form-group">
+          <label for="place" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Place</label>
+          <input type="text" class="form-control" id="place" name="place" placeholder="Enter the place" required maxlength="100">
+          <small id="placeHelp" class="form-text text-muted">place can be up to 100 characters long.</small>
+        </div>
+        <div class="form-group">
+          <label for="category" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Topic</label>
+          <select class="form-control" id="category" name="category">
+            <option value="Business">Business</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Sports">Sports</option>
+            <option value="Tech">Tech</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Submit</button>
+      </form>
+      <br><br><br>
+    </div>
+    
+     
+    <div class="tab-pane fade" id="viewUser">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Your Details</h3>
+      <div>
+        <br><br>
+        <p ><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Full Name:</strong> <%= user.fullname %></p>
+        <p><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Username:</strong> <%= user.username %></p><br><br><br>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="changePassword">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Change Password</h3><br><br>
+      <form action="/updatePassword/<%= userId %>" method="POST">
+        <div class="form-group">
+          <label for="oldPassword" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Old Password</label>
+          <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="newPassword" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">New Password</label>
+          <input type="password" class="form-control" id="newPassword" name="newPassword" required><br>
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Change Password</button><br><br><br><br>
+      </form>
+    </div>
+     
+  
+  
+    <div class="tab-pane fade" id="announce">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Announce</h3>
+      <small id="announceHelp" class="form-text text-muted">As you create new announcements, the oldest announcement will be automatically removed from the database to maintain a maximum of <strong>3</strong> announcements per user, ensuring data security and platform efficiency.</small>
+      <br>
+      <form action="/announce/<%= userId %>" method="POST">
+        <div class="form-group">
+          <label for="announcement" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Announcement</label>
+          <input type="text" class="form-control" id="announcement" name="announcement" placeholder="Enter the announcement" required maxlength="200">
+          <small id="announcementHelp" class="form-text text-muted">Announcement can be up to 200 characters long.</small>
+        </div>
+        <div class="form-group">
+          <label for="announcer" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Announcer</label>
+          <input type="text" class="form-control" id="announcer" name="announcer" value="<%= user.fullname %>" readonly maxlength="100">
+ 
+        </div><br>
+        <button type="submit" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Announce</button>
+      </form><br><br><br>
+    </div>
+    
+    <div class="tab-pane fade" id="myAnnouncements">
+      <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">My Announcements</h3>
+      <% user.announcements.reverse().forEach(function(announcement) { %>
+        <div class="card mb-3">
+          <div class="card-body" style="background-color: rgba(170, 236, 214, 0.495);">
+            <h5 class="card-title"style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><%= announcement.announcement %></h5>
+            <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Announced On:</strong> <%= announcement.createdAt %></p>
+            <a href="/editAnnouncement/<%= announcement._id %>" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Edit</a>
+            <a href="/deleteAnnouncement/<%= announcement._id %>" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<br>
+<div class="d-flex justify-content-center mt-3">
+  <button onclick="goBack()" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go Back</button>
+  </div>
+  <br><br>
+</body>
+
+<%- include('partials/footer') %>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

@@ -1,0 +1,41 @@
+<%- include('partials/login-header') %>
+<body style="background-color: aquamarine;">
+<div class="jumbotron text-center" style="background-color: aquamarine;">
+    <div class="container">
+      <i class="fas fa-key fa-6x"></i>
+  <h1 class="text-center mt-5" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Education</h1>
+
+  <% if (articles.length > 0) { %>
+    <% articles.reverse().forEach(function(article) { %>
+        <div class="card mb-3">
+          <div class="card-body" style="background-color: rgba(59, 232, 174, 0.393);">
+            <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><%= article.title %></h5>
+
+            <p class="card-text" style="font-style: oblique;"><%=article.place + " : "+ article.createdAt+ " by "+article.author %></p>
+            <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";">Topic:</strong> <%= article.category %></p>
+            <p class="card-text"><strong style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";">Likes:</strong> <%= article.likeCount %></p>
+            <p class="card-text"><%= article.content.substring(0, 150) %>...</p>
+            <a href="/article/<%= article._id %>" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Read More</a>
+          </div>
+          </div>
+    <% }) %>
+  <% } else { %>
+    <p>No articles found for Category B.</p>
+  <% } %>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <button onclick="goBack()" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go Back</button>
+  </div><br><br>
+</body>
+<%- include('partials/footer') %>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+

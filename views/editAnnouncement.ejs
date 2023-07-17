@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<body style="background-color: aquamarine;">
+<div class="container mt-5">
+  <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Edit Announcement</h1>
+  <br>
+  <form action="/updateAnnouncement/<%= announcementId %>" method="POST">
+    <div class="form-group">
+      <label for="announcement" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Announcement</label>
+      <input type="text" class="form-control" id="announcement" name="announcement" value="<%= announcement.announcement %>" required>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Update Announcement</button>
+  </form>
+</div>
+<br><br><br><br><br>
+
+</body>
+
+<%- include('partials/footer') %>

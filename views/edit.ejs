@@ -1,0 +1,41 @@
+<%- include('partials/login-header') %>
+<body style="background-color: aquamarine;">
+<div class="container">
+  <h1 class="text-center mt-5" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Edit Article</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/update/<%= article._id %>" method="POST">
+        <div class="form-group">
+          <label for="title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Title</label>
+          <input type="text" class="form-control" id="title" name="title" value="<%= article.title %>" required>
+        </div>
+        <div class="form-group">
+          <label for="content" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Content</label>
+          <textarea class="form-control" id="content" name="content" rows="5" required><%= article.content %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="place" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Place</label>
+          <input type="text" class="form-control" id="place" name="place" value="<%= article.place %>" required>
+        </div>
+        <div class="form-group">
+          <label for="category" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Category</label>
+          <select class="form-control" id="category" name="category">
+            <option value="A" <%= article.category === 'A' ? 'selected' : '' %>>Category A</option>
+            <option value="B" <%= article.category === 'B' ? 'selected' : '' %>>Category B</option>
+            <option value="C" <%= article.category === 'C' ? 'selected' : '' %>>Category C</option>
+            <option value="D" <%= article.category === 'D' ? 'selected' : '' %>>Category D</option>
+            <option value="E" <%= article.category === 'E' ? 'selected' : '' %>>Category E</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br><br>
+
+</body>
+
+<%- include('partials/footer') %>
+

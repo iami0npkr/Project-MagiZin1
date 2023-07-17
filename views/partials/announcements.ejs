@@ -1,0 +1,10 @@
+<div class="announcement-bar">
+  <% if (announcements && announcements.length > 0) { %>
+    <div class="announcement-bar">
+      <% announcements.forEach(function(announcement) { %>
+        <span class="announcement"><%= announcement %></span>
+      <% }) %>
+    </div>
+  <% } %>  
+  </div>
+  

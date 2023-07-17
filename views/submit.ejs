@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h1 class="text-center mt-5">Submit an Article</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/submit" method="POST">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter the article title" required>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea class="form-control" id="content" name="content" rows="5" placeholder="Enter the article content" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="place">Place</label>
+          <input type="text" class="form-control" id="place" name="place" placeholder="Enter the article place" required>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" id="category" name="category" required>
+            <option value="A">Category A</option>
+            <option value="B">Category B</option>
+            <option value="C">Category C</option>
+            <option value="D">Category D</option>
+            <option value="E">Category E</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

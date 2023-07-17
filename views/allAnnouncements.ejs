@@ -1,0 +1,35 @@
+<%- include('partials/login-header') %>
+<body style="background-color: aquamarine;">
+<div class="container mt-5">
+  <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Announcements</h1><br>
+
+  <div class="announcement-list">
+    <% usersWithAnnouncements.reverse().forEach(function(user) { %>
+      <% user.announcements.reverse().forEach(function(announcement) { %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><%= announcement.announcement %></h5>
+            <p class="card-text" style="font-style: oblique;"> <%="On "+announcement.createdAt+" by "+ user.fullname %></p>
+             
+          </div>
+        </div>
+      <% }) %>
+    <% }) %>
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+    <button onclick="goBack()" class="btn btn-primary" style="background-color: rgba(47, 82, 74, 0.696)">Go Back</button>
+    </div>
+    <br><br>
+</body>
+
+<%- include('partials/footer') %>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

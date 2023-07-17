@@ -579,7 +579,7 @@ app.get("/like/:articleId",isAuthenticated, function (req, res) {
 
     
 });
-app.get("/article/:articleId", function (req, res) {
+app.get("/article/:articleId", isAuthenticated,function (req, res) {
     const requestedArticleId = req.params.articleId;
     //find requestedArticleId in req.user.likedArticles in user details
     let likeStatus="Like"

@@ -631,7 +631,6 @@ app.get("/article/:articleId", isAuthenticated,function (req, res) {
                     res.render("article", {
                         title: requestedArticle.title,
                         content: requestedArticle.content,
-                        paragraphs:content.split('\n\n'),
                         place: requestedArticle.place,
                         category: requestedArticle.category,
                         createdAt: requestedArticle.createdAt,
